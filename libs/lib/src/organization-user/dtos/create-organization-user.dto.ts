@@ -1,13 +1,6 @@
 import { AutoMap } from '@automapper/classes';
 import { ApiProperty } from '@nestjs/swagger';
-import {
-  IsEnum,
-  IsNumber,
-  IsOptional,
-  IsPositive,
-  IsUUID,
-} from 'class-validator';
-import { EOrganizationUserRole } from '../enums/organization-user-role.enum';
+import { IsNumber, IsOptional, IsPositive, IsUUID } from 'class-validator';
 
 export class CreateOrganizationUserDto {
   @ApiProperty({ nullable: true })
@@ -17,15 +10,9 @@ export class CreateOrganizationUserDto {
   @IsPositive()
   Balance: number | null;
 
-  @ApiProperty({
-    nullable: true,
-    enum: EOrganizationUserRole,
-    enumName: 'EOrganizationUserRole',
-  })
-  @AutoMap(() => String)
-  @IsOptional()
-  @IsEnum(EOrganizationUserRole)
-  Role: EOrganizationUserRole | null;
+  @ApiProperty()
+  @IsUUID()
+  OrganizationRoleId: string;
 
   @ApiProperty()
   @IsUUID()

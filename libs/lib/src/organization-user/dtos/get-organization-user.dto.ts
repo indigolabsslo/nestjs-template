@@ -1,21 +1,18 @@
 import { AutoMap } from '@automapper/classes';
+import { GetOrganizationRoleDto } from '@lib/organization-role/dtos/get-organization-role.dto';
 import { GetOrganizationDto } from '@lib/organization/dtos/get-organization.dto';
 import { GetDto } from '@lib/shared/dtos/get.dto';
 import { GetUserDto } from '@lib/user/dtos/get-user.dto';
 import { ApiProperty } from '@nestjs/swagger';
-import { EOrganizationUserRole } from '../enums/organization-user-role.enum';
 
 export class GetOrganizationUserDto extends GetDto {
   @ApiProperty()
   @AutoMap()
   Balance: number;
 
-  @ApiProperty({
-    enum: EOrganizationUserRole,
-    enumName: 'EOrganizationUserRole',
-  })
-  @AutoMap(() => String)
-  Role: EOrganizationUserRole;
+  @ApiProperty({ type: GetOrganizationRoleDto })
+  @AutoMap(() => GetOrganizationRoleDto)
+  OrganizationRole: GetOrganizationRoleDto;
 
   @ApiProperty({ type: GetOrganizationDto })
   @AutoMap(() => GetOrganizationDto)

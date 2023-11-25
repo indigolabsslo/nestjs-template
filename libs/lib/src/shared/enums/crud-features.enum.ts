@@ -4,4 +4,5 @@ export enum ECrudFeatures {
   Organization = 'Organization',
   OrganizationUser = 'OrganizationUser',
   OrganizationDemoItem = 'OrganizationDemoItem',
+  OrganizationRole = 'OrganizationRole',
 }

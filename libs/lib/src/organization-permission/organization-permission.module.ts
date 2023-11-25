@@ -1,4 +1,7 @@
 import { Module } from '@nestjs/common';
+import { OrganizationPermissionService } from './organization-permission.service';
 
-@Module({})
+@Module({
+  providers: [OrganizationPermissionService]
+})
 export class OrganizationPermissionModule {}
