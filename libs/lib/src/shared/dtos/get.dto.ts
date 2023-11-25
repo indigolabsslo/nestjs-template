@@ -8,7 +8,7 @@ export class GetDto {
 
   @ApiProperty()
   @AutoMap()
-  updatedDate: string;
+  updateDate: string;
 
   @ApiProperty()
   @AutoMap()

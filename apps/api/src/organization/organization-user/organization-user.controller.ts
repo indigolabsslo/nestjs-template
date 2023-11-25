@@ -43,11 +43,11 @@ import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
   },
   query: {
     join: {
-      Organization: {
+      organization: {
         alias: 'organization',
         eager: true,
       },
-      User: {
+      user: {
         alias: 'user',
         eager: true,
       },

@@ -10,6 +10,7 @@ import { OrganizationUser } from './organization-user.entity';
 import { CreateOrganizationUserDto } from './dtos/create-organization-user.dto';
 import { ReplaceOrganizationUserDto } from './dtos/replace-organization-user.dto';
 import { UpdateOrganizationUserDto } from './dtos/update-organization-user.dto';
+import { OrganizationRoleService } from '@lib/organization-role/organization-role.service';
 
 @Injectable()
 export class OrganizationUserService extends TypeOrmCrudService<
@@ -25,6 +26,7 @@ export class OrganizationUserService extends TypeOrmCrudService<
     readonly mapper: Mapper,
     private readonly organizationService: OrganizationService,
     private readonly userService: UserService,
+    private readonly organizationRoleService: OrganizationRoleService,
   ) {
     super(repository, mapper);
   }
@@ -56,6 +58,17 @@ export class OrganizationUserService extends TypeOrmCrudService<
         throw new BadRequestException();
       }
       organizationUser.user = user;
+    }
+
+    //Organization Role
+    if (organizationUserDto.organizationRoleId) {
+      const organizationRole = await this.organizationRoleService.findOne({
+        where: { id: organizationUserDto.organizationRoleId },
+      });
+      if (!organizationRole) {
+        throw new BadRequestException();
+      }
+      organizationUser.organizationRole = organizationRole;
     }
     return organizationUser;
   }

@@ -1,5 +1,7 @@
-import { CrudConfigService } from '@indigolabs/crud';
+import { CrudActions, CrudConfigService } from '@indigolabs/crud';
 import { crudGlobalConfig } from '@lib/shared/config/crud-global.config';
+import { ECrudFeatures } from '@lib/shared/enums/crud-features.enum';
+import { ERouteParams } from '@lib/shared/enums/route-params.enum';
 CrudConfigService.load(crudGlobalConfig);
 
 import { ValidationPipe } from '@nestjs/common';
@@ -45,6 +47,22 @@ async function bootstrap() {
     })
     .build();
   const document = SwaggerModule.createDocument(app, config);
+  // Add additional schemas
+  document.components.schemas = {
+    ...document.components.schemas,
+    ECrudFeatures: {
+      type: 'string',
+      enum: Object.values(ECrudFeatures),
+    },
+    CrudActions: {
+      type: 'string',
+      enum: Object.values(CrudActions),
+    },
+    ERouteParams: {
+      type: 'string',
+      enum: Object.values(ERouteParams),
+    },
+  };
   SwaggerModule.setup('api', app, document, {
     swaggerOptions: {
       oauth2RedirectUrl: 'REDIRECT_URL', // after successfully logging

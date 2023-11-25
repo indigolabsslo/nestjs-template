@@ -10,19 +10,19 @@ import { EUserStatus } from '../enums/user-status.enum';
 export class GetUserDto extends GetDto {
   @ApiProperty()
   @AutoMap()
-  Email: string;
+  email: string;
 
   @ApiProperty({ nullable: true })
   @AutoMap()
-  Name: string | null;
+  name: string | null;
 
   @ApiProperty({ enum: EUserRole, enumName: 'EUserRole' })
   @AutoMap(() => String)
-  Role: EUserRole;
+  role: EUserRole;
 
   @ApiProperty({ type: GetMediaDto, nullable: true })
   @AutoMap(() => GetMediaDto)
-  Avatar: GetMediaDto | null;
+  avatar: GetMediaDto | null;
 
   @ApiProperty({ nullable: true })
   @AutoMap()

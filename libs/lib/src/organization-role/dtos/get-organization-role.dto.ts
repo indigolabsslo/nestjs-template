@@ -9,7 +9,7 @@ export class GetOrganizationRoleDto extends GetDto {
   name: string;
 
   @ApiProperty()
-  @AutoMap()
+  @AutoMap(() => [String])
   permissions: string[];
 
   @ApiProperty({ type: GetOrganizationDto })

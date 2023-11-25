@@ -18,5 +18,5 @@ export abstract class BaseEntity {
 
   @AutoMap()
   @UpdateDateColumn()
-  updatedDate: Date;
+  updateDate: Date;
 }

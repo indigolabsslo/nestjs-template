@@ -38,6 +38,24 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
         },
         query: {
           exclude: [],
+          join: {
+            image: {
+              alias: 'image',
+              eager: true,
+            },
+            organizationUsers: {
+              alias: 'organizationUsers',
+              eager: true,
+            },
+            'organizationUsers.organization': {
+              alias: 'organizationUsersOrganization',
+              eager: true,
+            },
+            'organizationUsers.organizationRole': {
+              alias: 'organizationUsersOrganizationRole',
+              eager: true,
+            },
+          },
         },
       },
       parsed: {
