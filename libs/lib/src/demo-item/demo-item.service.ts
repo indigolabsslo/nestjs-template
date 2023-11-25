@@ -32,9 +32,9 @@ export class DemoItemService extends TypeOrmCrudService<
     demoItemDto: CreateDemoItemDto | ReplaceDemoItemDto | UpdateDemoItemDto,
   ): Promise<DemoItem> {
     //Organization
-    if (demoItemDto.OrganizationId) {
+    if (demoItemDto.organizationId) {
       const organization = await this.organizationService.findOne({
-        where: { Id: demoItemDto.OrganizationId },
+        where: { Id: demoItemDto.organizationId },
       });
       if (!organization) {
         throw new BadRequestException();

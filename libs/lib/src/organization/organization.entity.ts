@@ -16,27 +16,27 @@ import { BaseEntity } from '../shared/entities/base-entity.entity';
 export class Organization extends BaseEntity {
   @AutoMap()
   @Column()
-  Name: string;
+  name: string;
 
   @AutoMap(() => Media)
   @OneToOne(() => Media)
   @JoinColumn()
-  Image: Media;
+  image: Media;
 
   @OneToMany(
     () => OrganizationUser,
-    (organizationUser) => organizationUser.Organization,
+    (organizationUser) => organizationUser.organization,
   )
-  OrganizationUsers: OrganizationUser[];
+  organizationUsers: OrganizationUser[];
 
-  @OneToMany(() => DemoItem, (demoItem) => demoItem.Organization)
-  DemoItems: DemoItem[];
+  @OneToMany(() => DemoItem, (demoItem) => demoItem.organization)
+  demoItems: DemoItem[];
 
   @AutoMap()
-  NumberOfUsers: number;
+  numberOfUsers: number;
 
   @AfterLoad()
   setDetails() {
-    this.NumberOfUsers = this.OrganizationUsers?.length ?? 0;
+    this.numberOfUsers = this.organizationUsers?.length ?? 0;
   }
 }

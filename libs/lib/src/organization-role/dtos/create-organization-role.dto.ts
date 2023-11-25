@@ -11,5 +11,5 @@ export class CreateOrganizationRoleDto {
 
   @ApiProperty()
   @IsUUID()
-  OrganizationId: string;
+  organizationId: string;
 }

@@ -45,11 +45,11 @@ export class ACLGuard implements CanActivate {
       case CrudActions.ReadOne:
         return true;
       default:
-        return user.Role === EUserRole.ADMIN;
+        return user.role === EUserRole.ADMIN;
     }
   }
 
   canActivateOrganizationLocation(user: User): boolean {
-    return user.Role === EUserRole.ADMIN;
+    return user.role === EUserRole.ADMIN;
   }
 }

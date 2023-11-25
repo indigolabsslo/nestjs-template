@@ -67,7 +67,7 @@ describe('Admin User (e2e)', () => {
   it('/organization (POST)', async () => {
     const createOrganizationDto: CreateOrganizationDto = {
       Name: 'Organization Test',
-      ImageId: organizationImage.Id,
+      imageId: organizationImage.Id,
     };
     const { body } = await request(app.getHttpServer())
       .post('/organization/' + organization.Id)

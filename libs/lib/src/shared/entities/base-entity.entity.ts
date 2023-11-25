@@ -10,13 +10,13 @@ import {
 export abstract class BaseEntity {
   @AutoMap()
   @PrimaryGeneratedColumn('uuid')
-  Id: string;
+  id: string;
 
   @AutoMap()
   @CreateDateColumn()
-  CreateDate: Date;
+  createDate: Date;
 
   @AutoMap()
   @UpdateDateColumn()
-  UpdatedDate: Date;
+  updatedDate: Date;
 }

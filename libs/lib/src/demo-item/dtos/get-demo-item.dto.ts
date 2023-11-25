@@ -6,9 +6,9 @@ import { ApiProperty } from '@nestjs/swagger';
 export class GetDemoItemDto extends GetDto {
   @ApiProperty()
   @AutoMap()
-  Name: string;
+  name: string;
 
   @ApiProperty({ type: GetOrganizationDto, nullable: true })
   @AutoMap(() => GetOrganizationDto)
-  Organization: GetOrganizationDto | null;
+  organization: GetOrganizationDto | null;
 }

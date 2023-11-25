@@ -35,12 +35,12 @@ export class OrganizationService extends TypeOrmCrudService<
       | UpdateOrganizationDto,
   ): Promise<Organization> {
     //Image
-    if (organizationDto.ImageId) {
-      const image = await this.mediaService.findOne(organizationDto.ImageId);
+    if (organizationDto.imageId) {
+      const image = await this.mediaService.findOne(organizationDto.imageId);
       if (!image) {
         throw new BadRequestException();
       }
-      organization.Image = image;
+      organization.image = image;
     }
 
     return organization;

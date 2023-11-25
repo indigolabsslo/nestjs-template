@@ -10,13 +10,13 @@ export class OrganizationUser extends BaseEntity {
   @AutoMap(() => Organization)
   @ManyToOne(
     () => Organization,
-    (organization) => organization.OrganizationUsers,
+    (organization) => organization.organizationUsers,
   )
-  Organization: Organization;
+  organization: Organization;
 
   @AutoMap(() => User)
-  @ManyToOne(() => User, (user) => user.OrganizationUsers)
-  User: User;
+  @ManyToOne(() => User, (user) => user.organizationUsers)
+  user: User;
 
   @AutoMap(() => OrganizationRole)
   @ManyToOne(

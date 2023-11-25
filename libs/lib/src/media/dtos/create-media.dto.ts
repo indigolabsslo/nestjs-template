@@ -7,20 +7,20 @@ export class CreateMediaDto {
   @ApiProperty()
   @AutoMap()
   @IsString()
-  Key: string;
+  key: string;
 
   @ApiProperty()
   @AutoMap()
   @IsString()
-  Name: string;
+  name: string;
 
   @ApiProperty()
   @AutoMap()
   @IsBoolean()
-  Public: boolean;
+  public: boolean;
 
   @ApiProperty({ enum: EMediaType, enumName: 'EMediaType' })
   @AutoMap(() => String)
   @IsEnum(EMediaType)
-  Type: EMediaType;
+  type: EMediaType;
 }

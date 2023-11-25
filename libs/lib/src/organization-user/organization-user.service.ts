@@ -37,25 +37,25 @@ export class OrganizationUserService extends TypeOrmCrudService<
       | UpdateOrganizationUserDto,
   ): Promise<OrganizationUser> {
     //Organization
-    if (organizationUserDto.OrganizationId) {
+    if (organizationUserDto.organizationId) {
       const organization = await this.organizationService.findOne({
-        where: { Id: organizationUserDto.OrganizationId },
+        where: { id: organizationUserDto.organizationId },
       });
       if (!organization) {
         throw new BadRequestException();
       }
-      organizationUser.Organization = organization;
+      organizationUser.organization = organization;
     }
 
     //User
-    if (organizationUserDto.UserId) {
+    if (organizationUserDto.userId) {
       const user = await this.userService.findOne({
-        where: { Id: organizationUserDto.UserId },
+        where: { id: organizationUserDto.userId },
       });
       if (!user) {
         throw new BadRequestException();
       }
-      organizationUser.User = user;
+      organizationUser.user = user;
     }
     return organizationUser;
   }

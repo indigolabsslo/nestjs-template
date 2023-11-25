@@ -7,20 +7,20 @@ import { EMediaType } from './enums/media-type.enum';
 export class Media extends BaseEntity {
   @AutoMap()
   @Column({ unique: true })
-  Key: string;
+  key: string;
 
   @AutoMap()
   @Column()
-  Name: string;
+  name: string;
 
   @AutoMap()
   @Column({ default: false })
-  Public: boolean;
+  public: boolean;
 
   @AutoMap(() => String)
   @Column({ type: 'enum', enum: EMediaType, enumName: 'EMediaType' })
-  Type: EMediaType;
+  type: EMediaType;
 
   @AutoMap()
-  Url: string;
+  url: string;
 }

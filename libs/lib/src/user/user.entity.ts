@@ -11,11 +11,11 @@ import { EUserStatus } from './enums/user-status.enum';
 export class User extends BaseEntity {
   @AutoMap()
   @Column({ unique: true, nullable: true })
-  Email: string | null;
+  email: string | null;
 
   @AutoMap()
   @Column({ nullable: true })
-  Name: string | null;
+  name: string | null;
 
   @AutoMap(() => String)
   @Column({
@@ -24,31 +24,31 @@ export class User extends BaseEntity {
     default: EUserRole.USER,
     enumName: 'EUserRole',
   })
-  Role: EUserRole;
+  role: EUserRole;
 
   @AutoMap(() => Media)
   @OneToOne(() => Media, { nullable: true })
-  Avatar: Media | null;
+  avatar: Media | null;
 
   @AutoMap()
   @Column({ nullable: true })
-  SocialAvatarUrl: string | null;
+  socialAvatarUrl: string | null;
 
   @AutoMap()
   @Column({ nullable: true })
-  SupabaseId: string | null;
+  supabaseId: string | null;
 
   @AutoMap()
   @Column({ nullable: true })
-  GoogleId: string | null;
+  googleId: string | null;
 
   @AutoMap()
   @Column({ nullable: true })
-  AppleId: string | null;
+  appleId: string | null;
 
   @AutoMap()
   @Column({ nullable: true })
-  FacebookId: string | null;
+  facebookId: string | null;
 
   @AutoMap(() => String)
   @Column({
@@ -57,7 +57,7 @@ export class User extends BaseEntity {
     default: EOnboardingStatus.NOT_STARTED,
     enumName: 'EOnboardingStatus',
   })
-  OnboardingStatus: EOnboardingStatus;
+  onboardingStatus: EOnboardingStatus;
 
   @AutoMap(() => String)
   @Column({
@@ -66,12 +66,12 @@ export class User extends BaseEntity {
     default: EUserStatus.ACTIVE,
     enumName: 'EUserStatus',
   })
-  Status: EUserStatus;
+  status: EUserStatus;
 
   @AutoMap(() => [OrganizationUser])
   @OneToMany(
     () => OrganizationUser,
-    (organizationUser) => organizationUser.User,
+    (organizationUser) => organizationUser.user,
   )
-  OrganizationUsers: OrganizationUser[];
+  organizationUsers: OrganizationUser[];
 }

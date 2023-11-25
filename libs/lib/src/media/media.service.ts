@@ -25,26 +25,26 @@ export class MediaService {
   }
 
   async create(file: Express.Multer.File) {
-    const Name = file.filename ?? file.originalname;
-    const Key = getKey(Name);
-    const Type = mimeToType(file.mimetype);
-    const Public = false;
+    const name = file.filename ?? file.originalname;
+    const key = getKey(name);
+    const type = mimeToType(file.mimetype);
+    const publicData = false;
 
-    await this.supabaseService.uploadFile(this.Bucket, file, Key);
+    await this.supabaseService.uploadFile(this.Bucket, file, key);
 
     const entity = this.mapper.map(
-      { Key, Type, Name, Public },
+      { key, type, name, public: publicData },
       CreateMediaDto,
       Media,
     );
 
     const res = await this.repository.save(entity);
-    return this.findOne(res.Id);
+    return this.findOne(res.id);
   }
 
-  async findOne(Id: string): Promise<Media | null> {
+  async findOne(id: string): Promise<Media | null> {
     return this.repository.findOne({
-      where: { Id },
+      where: { id },
     });
   }
 }

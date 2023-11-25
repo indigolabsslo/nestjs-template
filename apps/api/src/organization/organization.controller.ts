@@ -32,19 +32,19 @@ import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
   },
   params: {
     [ERouteParams.OrganizationId]: {
-      field: 'Id',
+      field: 'id',
       type: 'uuid',
       primary: true,
     },
   },
   query: {
     join: {
-      Image: {
-        alias: 'Image',
+      image: {
+        alias: 'image',
         eager: true,
       },
-      OrganizationUsers: {
-        alias: 'OrganizationUsers',
+      organizationUsers: {
+        alias: 'organizationUsers',
         eager: true,
       },
     },

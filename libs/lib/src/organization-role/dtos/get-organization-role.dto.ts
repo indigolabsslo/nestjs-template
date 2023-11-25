@@ -10,5 +10,5 @@ export class GetOrganizationRoleDto extends GetDto {
 
   @ApiProperty({ type: GetOrganizationDto })
   @AutoMap(() => GetOrganizationDto)
-  Organization: GetOrganizationDto;
+  organization: GetOrganizationDto;
 }

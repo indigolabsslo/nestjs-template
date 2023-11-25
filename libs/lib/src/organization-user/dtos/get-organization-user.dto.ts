@@ -6,19 +6,15 @@ import { GetUserDto } from '@lib/user/dtos/get-user.dto';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class GetOrganizationUserDto extends GetDto {
-  @ApiProperty()
-  @AutoMap()
-  Balance: number;
-
   @ApiProperty({ type: GetOrganizationRoleDto })
   @AutoMap(() => GetOrganizationRoleDto)
-  OrganizationRole: GetOrganizationRoleDto;
+  organizationRole: GetOrganizationRoleDto;
 
   @ApiProperty({ type: GetOrganizationDto })
   @AutoMap(() => GetOrganizationDto)
-  Organization: GetOrganizationDto;
+  organization: GetOrganizationDto;
 
   @ApiProperty({ type: GetUserDto })
   @AutoMap(() => GetUserDto)
-  User: GetUserDto;
+  user: GetUserDto;
 }

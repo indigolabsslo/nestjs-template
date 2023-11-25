@@ -10,7 +10,7 @@ export class OrganizationRole extends BaseEntity {
   @AutoMap(() => Organization)
   @ManyToOne(
     () => Organization,
-    (organization) => organization.OrganizationUsers,
+    (organization) => organization.organizationUsers,
   )
   organization: Organization;
 

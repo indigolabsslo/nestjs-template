@@ -26,17 +26,17 @@ export class GetUserDto extends GetDto {
 
   @ApiProperty({ nullable: true })
   @AutoMap()
-  SocialAvatarUrl: string | null;
+  socialAvatarUrl: string | null;
 
   @ApiProperty({ enum: EOnboardingStatus, enumName: 'EOnboardingStatus' })
   @AutoMap(() => String)
-  OnboardingStatus: EOnboardingStatus;
+  onboardingStatus: EOnboardingStatus;
 
   @ApiProperty({ enum: EUserStatus, enumName: 'EUserStatus' })
   @AutoMap(() => String)
-  Status: EUserStatus;
+  status: EUserStatus;
 
   @ApiProperty({ type: GetOrganizationUserDto, isArray: true })
   @AutoMap(() => [GetOrganizationUserDto])
-  OrganizationUsers: GetOrganizationUserDto[];
+  organizationUsers: GetOrganizationUserDto[];
 }

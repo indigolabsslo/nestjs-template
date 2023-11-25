@@ -5,7 +5,6 @@ import { DemoItemService } from '@lib/demo-item/demo-item.service';
 import { CreateDemoItemDto } from '@lib/demo-item/dtos/create-demo-item.dto';
 import { MediaService } from '@lib/media/media.service';
 import { CreateOrganizationUserDto } from '@lib/organization-user/dtos/create-organization-user.dto';
-import { EOrganizationUserRole } from '@lib/organization-user/enums/organization-user-role.enum';
 import { OrganizationUser } from '@lib/organization-user/organization-user.entity';
 import { OrganizationUserService } from '@lib/organization-user/organization-user.service';
 import { CreateOrganizationDto } from '@lib/organization/dtos/create-organization.dto';
@@ -100,17 +99,17 @@ export class SeedService {
       this.userService.createOne(
         this.defaultReq,
         {
-          Email: 'admin@indigo.si',
-          Name: 'Admin',
-          Role: EUserRole.ADMIN,
-          AppleId: null,
-          AvatarId: null,
-          FacebookId: null,
-          SupabaseId: null,
-          GoogleId: null,
-          SocialAvatarUrl: null,
-          OnboardingStatus: EOnboardingStatus.COMPLETE,
-          Status: EUserStatus.ACTIVE,
+          email: 'admin@indigo.si',
+          name: 'Admin',
+          role: EUserRole.ADMIN,
+          appleId: null,
+          avatarId: null,
+          facebookId: null,
+          supabaseId: null,
+          googleId: null,
+          socialAvatarUrl: null,
+          onboardingStatus: EOnboardingStatus.COMPLETE,
+          status: EUserStatus.ACTIVE,
         },
         CreateUserDto,
         User,
@@ -118,17 +117,17 @@ export class SeedService {
       this.userService.createOne(
         this.defaultReq,
         {
-          Email: 'user1@indigo.si',
-          Name: 'User 1',
-          Role: EUserRole.USER,
-          AppleId: null,
-          AvatarId: null,
-          FacebookId: null,
-          SupabaseId: null,
-          GoogleId: null,
-          SocialAvatarUrl: null,
-          OnboardingStatus: EOnboardingStatus.COMPLETE,
-          Status: EUserStatus.ACTIVE,
+          email: 'user1@indigo.si',
+          name: 'User 1',
+          role: EUserRole.USER,
+          appleId: null,
+          avatarId: null,
+          facebookId: null,
+          supabaseId: null,
+          googleId: null,
+          socialAvatarUrl: null,
+          onboardingStatus: EOnboardingStatus.COMPLETE,
+          status: EUserStatus.ACTIVE,
         },
         CreateUserDto,
         User,
@@ -136,17 +135,17 @@ export class SeedService {
       this.userService.createOne(
         this.defaultReq,
         {
-          Email: 'user2@indigo.si',
-          Name: 'User 2',
-          Role: EUserRole.USER,
-          AppleId: null,
-          AvatarId: null,
-          FacebookId: null,
-          SupabaseId: null,
-          GoogleId: null,
-          SocialAvatarUrl: null,
-          OnboardingStatus: EOnboardingStatus.COMPLETE,
-          Status: EUserStatus.ACTIVE,
+          email: 'user2@indigo.si',
+          name: 'User 2',
+          role: EUserRole.USER,
+          appleId: null,
+          avatarId: null,
+          facebookId: null,
+          supabaseId: null,
+          googleId: null,
+          socialAvatarUrl: null,
+          onboardingStatus: EOnboardingStatus.COMPLETE,
+          status: EUserStatus.ACTIVE,
         },
         CreateUserDto,
         User,
@@ -154,17 +153,17 @@ export class SeedService {
       this.userService.createOne(
         this.defaultReq,
         {
-          Email: 'user3@indigo.si',
-          Name: 'User 3',
-          Role: EUserRole.USER,
-          AppleId: null,
-          AvatarId: null,
-          FacebookId: null,
-          SupabaseId: null,
-          GoogleId: null,
-          SocialAvatarUrl: null,
-          OnboardingStatus: EOnboardingStatus.COMPLETE,
-          Status: EUserStatus.ACTIVE,
+          email: 'user3@indigo.si',
+          name: 'User 3',
+          role: EUserRole.USER,
+          appleId: null,
+          avatarId: null,
+          facebookId: null,
+          supabaseId: null,
+          googleId: null,
+          socialAvatarUrl: null,
+          onboardingStatus: EOnboardingStatus.COMPLETE,
+          status: EUserStatus.ACTIVE,
         },
         CreateUserDto,
         User,
@@ -172,17 +171,17 @@ export class SeedService {
       this.userService.createOne(
         this.defaultReq,
         {
-          Email: 'user4@indigo.si',
-          Name: 'User 4',
-          Role: EUserRole.USER,
-          AppleId: null,
-          AvatarId: null,
-          FacebookId: null,
-          SupabaseId: null,
-          GoogleId: null,
-          SocialAvatarUrl: null,
-          OnboardingStatus: EOnboardingStatus.COMPLETE,
-          Status: EUserStatus.ACTIVE,
+          email: 'user4@indigo.si',
+          name: 'User 4',
+          role: EUserRole.USER,
+          appleId: null,
+          avatarId: null,
+          facebookId: null,
+          supabaseId: null,
+          googleId: null,
+          socialAvatarUrl: null,
+          onboardingStatus: EOnboardingStatus.COMPLETE,
+          status: EUserStatus.ACTIVE,
         },
         CreateUserDto,
         User,
@@ -208,8 +207,8 @@ export class SeedService {
       this.organizationService.createOne(
         this.defaultReq,
         {
-          Name: 'Organization 1',
-          ImageId: organization1Image.Id,
+          name: 'Organization 1',
+          imageId: organization1Image.id,
         },
         CreateOrganizationDto,
         Organization,
@@ -217,8 +216,8 @@ export class SeedService {
       this.organizationService.createOne(
         this.defaultReq,
         {
-          Name: 'Organization 2',
-          ImageId: organization2Image.Id,
+          name: 'Organization 2',
+          imageId: organization2Image.id,
         },
         CreateOrganizationDto,
         Organization,
@@ -240,9 +239,8 @@ export class SeedService {
       this.organizationUserService.createOne(
         this.defaultReq,
         {
-          OrganizationId: organization1.Id,
-          UserId: user1.Id,
-          Role: EOrganizationUserRole.ADMIN,
+          organizationId: organization1.id,
+          userId: user1.id,
         },
         CreateOrganizationUserDto,
         OrganizationUser,
@@ -250,9 +248,8 @@ export class SeedService {
       this.organizationUserService.createOne(
         this.defaultReq,
         {
-          OrganizationId: organization1.Id,
-          UserId: user2.Id,
-          Role: EOrganizationUserRole.ADMIN,
+          organizationId: organization1.id,
+          userId: user2.id,
         },
         CreateOrganizationUserDto,
         OrganizationUser,
@@ -260,9 +257,8 @@ export class SeedService {
       this.organizationUserService.createOne(
         this.defaultReq,
         {
-          OrganizationId: organization1.Id,
-          UserId: user3.Id,
-          Role: EOrganizationUserRole.USER,
+          organizationId: organization1.id,
+          userId: user3.id,
         },
         CreateOrganizationUserDto,
         OrganizationUser,
@@ -270,9 +266,8 @@ export class SeedService {
       this.organizationUserService.createOne(
         this.defaultReq,
         {
-          OrganizationId: organization1.Id,
-          UserId: user4.Id,
-          Role: EOrganizationUserRole.USER,
+          organizationId: organization1.id,
+          userId: user4.id,
         },
         CreateOrganizationUserDto,
         OrganizationUser,
@@ -280,9 +275,8 @@ export class SeedService {
       this.organizationUserService.createOne(
         this.defaultReq,
         {
-          OrganizationId: organization2.Id,
-          UserId: user1.Id,
-          Role: EOrganizationUserRole.USER,
+          organizationId: organization2.id,
+          userId: user1.id,
         },
         CreateOrganizationUserDto,
         OrganizationUser,
@@ -290,9 +284,8 @@ export class SeedService {
       this.organizationUserService.createOne(
         this.defaultReq,
         {
-          OrganizationId: organization2.Id,
-          UserId: user2.Id,
-          Role: EOrganizationUserRole.USER,
+          organizationId: organization2.id,
+          userId: user2.id,
         },
         CreateOrganizationUserDto,
         OrganizationUser,
@@ -300,9 +293,8 @@ export class SeedService {
       this.organizationUserService.createOne(
         this.defaultReq,
         {
-          OrganizationId: organization2.Id,
-          UserId: user3.Id,
-          Role: EOrganizationUserRole.ADMIN,
+          organizationId: organization2.id,
+          userId: user3.id,
         },
         CreateOrganizationUserDto,
         OrganizationUser,
@@ -310,9 +302,8 @@ export class SeedService {
       this.organizationUserService.createOne(
         this.defaultReq,
         {
-          OrganizationId: organization2.Id,
-          UserId: user4.Id,
-          Role: EOrganizationUserRole.ADMIN,
+          organizationId: organization2.id,
+          userId: user4.id,
         },
         CreateOrganizationUserDto,
         OrganizationUser,
@@ -330,8 +321,8 @@ export class SeedService {
       this.demoItemService.createOne(
         this.defaultReq,
         {
-          Name: 'Demo item 1 in organization 1',
-          OrganizationId: organization1.Id,
+          name: 'Demo item 1 in organization 1',
+          organizationId: organization1.id,
         },
         CreateDemoItemDto,
         DemoItem,
@@ -339,8 +330,8 @@ export class SeedService {
       this.demoItemService.createOne(
         this.defaultReq,
         {
-          Name: 'Demo item 2 in organization 1',
-          OrganizationId: organization1.Id,
+          name: 'Demo item 2 in organization 1',
+          organizationId: organization1.id,
         },
         CreateDemoItemDto,
         DemoItem,
@@ -348,8 +339,8 @@ export class SeedService {
       this.demoItemService.createOne(
         this.defaultReq,
         {
-          Name: 'Demo item 1 in organization 2',
-          OrganizationId: organization1.Id,
+          name: 'Demo item 1 in organization 2',
+          organizationId: organization1.id,
         },
         CreateDemoItemDto,
         DemoItem,
@@ -357,8 +348,8 @@ export class SeedService {
       this.demoItemService.createOne(
         this.defaultReq,
         {
-          Name: 'Demo item 2 in organization 2',
-          OrganizationId: organization1.Id,
+          name: 'Demo item 2 in organization 2',
+          organizationId: organization1.id,
         },
         CreateDemoItemDto,
         DemoItem,

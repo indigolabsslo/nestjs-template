@@ -6,9 +6,9 @@ export class CreateOrganizationDto {
   @ApiProperty()
   @AutoMap()
   @IsString()
-  Name: string;
+  name: string;
 
   @ApiProperty()
   @IsUUID()
-  ImageId: string;
+  imageId: string;
 }

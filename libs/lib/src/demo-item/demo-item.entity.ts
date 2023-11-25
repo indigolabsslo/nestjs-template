@@ -7,9 +7,9 @@ import { BaseEntity } from '../shared/entities/base-entity.entity';
 export class DemoItem extends BaseEntity {
   @AutoMap()
   @Column()
-  Name: string;
+  name: string;
 
   @AutoMap(() => Organization)
-  @ManyToOne(() => Organization, (organization) => organization.DemoItems)
-  Organization: Organization;
+  @ManyToOne(() => Organization, (organization) => organization.demoItems)
+  organization: Organization;
 }

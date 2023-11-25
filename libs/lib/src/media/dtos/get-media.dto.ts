@@ -6,17 +6,17 @@ import { EMediaType } from '../enums/media-type.enum';
 export class GetMediaDto extends GetDto {
   @ApiProperty()
   @AutoMap()
-  Name: string;
+  name: string;
 
   @ApiProperty()
   @AutoMap()
-  Public: boolean;
+  public: boolean;
 
   @ApiProperty({ enum: EMediaType, enumName: 'EMediaType' })
   @AutoMap(() => String)
-  Type: EMediaType;
+  type: EMediaType;
 
   @ApiProperty()
   @AutoMap()
-  Url: string;
+  url: string;
 }

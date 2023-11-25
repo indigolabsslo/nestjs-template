@@ -20,7 +20,7 @@ export class InitialMigration1700826781388 implements MigrationInterface {
       `CREATE TYPE "public"."EUserStatus" AS ENUM('ACTIVE', 'DISABLED', 'DELETED')`,
     );
     await queryRunner.query(
-      `CREATE TABLE "user" ("Id" uuid NOT NULL DEFAULT uuid_generate_v4(), "CreateDate" TIMESTAMP NOT NULL DEFAULT now(), "UpdatedDate" TIMESTAMP NOT NULL DEFAULT now(), "Email" character varying, "Name" character varying, "Role" "public"."EUserRole" NOT NULL DEFAULT 'USER', "SocialAvatarUrl" character varying, "SupabaseId" character varying, "GoogleId" character varying, "AppleId" character varying, "FacebookId" character varying, "OnboardingStatus" "public"."EOnboardingStatus" NOT NULL DEFAULT 'NOT_STARTED', "Status" "public"."EUserStatus" NOT NULL DEFAULT 'ACTIVE', CONSTRAINT "UQ_b7eee57d84fb7ed872e660197fb" UNIQUE ("Email"), CONSTRAINT "PK_1e4be10b13490bd87f4cc30c142" PRIMARY KEY ("Id"))`,
+      `CREATE TABLE "user" ("Id" uuid NOT NULL DEFAULT uuid_generate_v4(), "CreateDate" TIMESTAMP NOT NULL DEFAULT now(), "UpdatedDate" TIMESTAMP NOT NULL DEFAULT now(), "Email" character varying, "Name" character varying, "Role" "public"."EUserRole" NOT NULL DEFAULT 'USER', "socialAvatarUrl" character varying, "supabaseId" character varying, "googleId" character varying, "appleId" character varying, "facebookId" character varying, "OnboardingStatus" "public"."EOnboardingStatus" NOT NULL DEFAULT 'NOT_STARTED', "Status" "public"."EUserStatus" NOT NULL DEFAULT 'ACTIVE', CONSTRAINT "UQ_b7eee57d84fb7ed872e660197fb" UNIQUE ("Email"), CONSTRAINT "PK_1e4be10b13490bd87f4cc30c142" PRIMARY KEY ("Id"))`,
     );
     await queryRunner.query(
       `CREATE TYPE "public"."EOrganizationUserRole" AS ENUM('USER', 'ADMIN')`,

@@ -6,10 +6,10 @@ export class CreateDemoItemDto {
   @ApiProperty()
   @AutoMap()
   @IsString()
-  Name: string;
+  name: string;
 
   @ApiProperty()
   @IsOptional()
   @IsUUID()
-  OrganizationId: string | null;
+  organizationId: string | null;
 }

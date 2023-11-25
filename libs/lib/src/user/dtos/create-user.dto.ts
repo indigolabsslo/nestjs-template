@@ -9,55 +9,55 @@ export class CreateUserDto {
   @ApiProperty()
   @AutoMap()
   @IsEmail()
-  Email: string;
+  email: string;
 
   @ApiProperty({ nullable: true })
   @AutoMap()
   @IsOptional()
   @IsString()
-  Name: string | null;
+  name: string | null;
 
   @ApiProperty({ nullable: true, enum: EUserRole, enumName: 'EUserRole' })
   @AutoMap(() => String)
   @IsOptional()
   @IsEnum(EUserRole)
-  Role: EUserRole | null;
+  role: EUserRole | null;
 
   @ApiProperty({ nullable: true })
   @AutoMap()
   @IsOptional()
   @IsUUID()
-  AvatarId: string | null;
+  avatarId: string | null;
 
   @ApiProperty({ nullable: true })
   @AutoMap()
   @IsOptional()
   @IsString()
-  SocialAvatarUrl: string | null;
+  socialAvatarUrl: string | null;
 
   @ApiProperty({ nullable: true })
   @AutoMap()
   @IsOptional()
   @IsString()
-  SupabaseId: string | null;
+  supabaseId: string | null;
 
   @ApiProperty({ nullable: true })
   @AutoMap()
   @IsOptional()
   @IsString()
-  GoogleId: string | null;
+  googleId: string | null;
 
   @ApiProperty({ nullable: true })
   @AutoMap()
   @IsOptional()
   @IsString()
-  AppleId: string | null;
+  appleId: string | null;
 
   @ApiProperty({ nullable: true })
   @AutoMap()
   @IsOptional()
   @IsString()
-  FacebookId: string | null;
+  facebookId: string | null;
 
   @ApiProperty({
     nullable: true,
@@ -67,11 +67,11 @@ export class CreateUserDto {
   @AutoMap(() => String)
   @IsOptional()
   @IsEnum(EOnboardingStatus)
-  OnboardingStatus: EOnboardingStatus | null;
+  onboardingStatus: EOnboardingStatus | null;
 
   @ApiProperty({ nullable: true, enum: EUserStatus, enumName: 'EUserStatus' })
   @AutoMap(() => String)
   @IsOptional()
   @IsEnum(EUserStatus)
-  Status: EUserStatus | null;
+  status: EUserStatus | null;
 }

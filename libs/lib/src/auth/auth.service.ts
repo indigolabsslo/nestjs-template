@@ -20,7 +20,7 @@ export class AuthService {
     let user = await this.userService.findOne({
       where: [
         {
-          SupabaseId: payload.sub,
+          supabaseId: payload.sub,
         },
         {
           Email: payload.email,
@@ -35,20 +35,20 @@ export class AuthService {
           Email: payload.email ?? '',
           Role: EUserRole.USER,
           Name: payload.name ?? null,
-          // AppleId: payload.firebase.identities['apple.com']?.length
+          // appleId: payload.firebase.identities['apple.com']?.length
           //   ? payload.firebase.identities['apple.com'][0]
           //   : null,
-          // AvatarId: null,
-          // FacebookId: payload.firebase.identities['facebook.com']?.length
+          // avatarId: null,
+          // facebookId: payload.firebase.identities['facebook.com']?.length
           //   ? payload.firebase.identities['facebook.com'][0]
           //   : null,
-          SupabaseId: payload.sub,
-          // GoogleId: payload.firebase.identities['google.com']?.length
+          supabaseId: payload.sub,
+          // googleId: payload.firebase.identities['google.com']?.length
           //   ? payload.firebase.identities['google.com'][0]
           //   : null,
-          // SocialAvatarUrl: payload.picture ?? null,
-          OnboardingStatus: EOnboardingStatus.NOT_STARTED,
-          Status: EUserStatus.ACTIVE,
+          // socialAvatarUrl: payload.picture ?? null,
+          onboardingStatus: EOnboardingStatus.NOT_STARTED,
+          status: EUserStatus.ACTIVE,
         },
         CreateUserDto,
         User,
@@ -60,17 +60,17 @@ export class AuthService {
         {
           Email: payload.email,
           Name: user.Name ?? payload.namem,
-          // AppleId: payload.firebase.identities['apple.com']?.length
+          // appleId: payload.firebase.identities['apple.com']?.length
           //   ? payload.firebase.identities['apple.com'][0]
           //   : undefined,
-          // FacebookId: payload.firebase.identities['facebook.com']?.length
+          // facebookId: payload.firebase.identities['facebook.com']?.length
           //   ? payload.firebase.identities['facebook.com'][0]
           //   : undefined,
-          SupabaseId: payload.sub,
-          // GoogleId: payload.firebase.identities['google.com']?.length
+          supabaseId: payload.sub,
+          // googleId: payload.firebase.identities['google.com']?.length
           //   ? payload.firebase.identities['google.com'][0]
           //   : undefined,
-          // SocialAvatarUrl: payload.picture ?? null,
+          // socialAvatarUrl: payload.picture ?? null,
         },
         UpdateUserDto,
         User,

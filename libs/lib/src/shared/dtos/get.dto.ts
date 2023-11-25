@@ -4,13 +4,13 @@ import { ApiProperty } from '@nestjs/swagger';
 export class GetDto {
   @ApiProperty()
   @AutoMap()
-  CreateDate: string;
+  createDate: string;
 
   @ApiProperty()
   @AutoMap()
-  UpdatedDate: string;
+  updatedDate: string;
 
   @ApiProperty()
   @AutoMap()
-  Id: string;
+  id: string;
 }

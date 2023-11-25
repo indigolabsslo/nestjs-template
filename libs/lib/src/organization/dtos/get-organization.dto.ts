@@ -6,13 +6,13 @@ import { ApiProperty } from '@nestjs/swagger';
 export class GetOrganizationDto extends GetDto {
   @ApiProperty()
   @AutoMap()
-  Name: string;
+  name: string;
 
   @ApiProperty({ type: GetMediaDto })
   @AutoMap(() => GetMediaDto)
-  Image: GetMediaDto;
+  image: GetMediaDto;
 
   @ApiProperty()
   @AutoMap()
-  NumberOfUsers: number;
+  numberOfUsers: number;
 }

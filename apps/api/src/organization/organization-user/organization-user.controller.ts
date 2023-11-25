@@ -32,11 +32,11 @@ import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
   },
   params: {
     [ERouteParams.OrganizationId]: {
-      field: 'Organization.Id',
+      field: 'organization.id',
       type: 'uuid',
     },
     [ERouteParams.OrganizationUserId]: {
-      field: 'Id',
+      field: 'id',
       type: 'uuid',
       primary: true,
     },
@@ -44,11 +44,11 @@ import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
   query: {
     join: {
       Organization: {
-        alias: 'Organization',
+        alias: 'organization',
         eager: true,
       },
       User: {
-        alias: 'User',
+        alias: 'user',
         eager: true,
       },
     },

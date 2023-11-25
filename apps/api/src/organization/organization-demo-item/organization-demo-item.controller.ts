@@ -49,11 +49,11 @@ import { UpdateOrganizationDemoItemDto } from './dtos/update-organization-demo-i
   },
   params: {
     [ERouteParams.OrganizationId]: {
-      field: 'Organization.Id',
+      field: 'organization.id',
       type: 'uuid',
     },
     [ERouteParams.DemoItemId]: {
-      field: 'Id',
+      field: 'id',
       type: 'uuid',
       primary: true,
     },
@@ -61,7 +61,7 @@ import { UpdateOrganizationDemoItemDto } from './dtos/update-organization-demo-i
   query: {
     join: {
       Organization: {
-        alias: 'Organization',
+        alias: 'organization',
         eager: true,
       },
     },
@@ -109,8 +109,8 @@ export class OrganizationDemoItemController
   createOne(
     @ParsedRequest() req: CrudRequest,
     @ParsedBody() dto: CreateOrganizationDemoItemDto,
-    @Param(ERouteParams.OrganizationId) OrganizationId: string,
+    @Param(ERouteParams.OrganizationId) organizationId: string,
   ) {
-    return this.base.createOneBase(req, dto, { OrganizationId });
+    return this.base.createOneBase(req, dto, { organizationId });
   }
 }
