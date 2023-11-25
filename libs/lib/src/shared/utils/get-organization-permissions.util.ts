@@ -16,7 +16,7 @@ export default function getOrganizationPermissions() {
       CrudActions.UpdateOne,
       CrudActions.DeleteOne,
     ].forEach((ca) => {
-      res.push(cf + '-' + ca);
+      res.push(`${cf}-${ca}`);
     });
   });
   return res;

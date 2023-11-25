@@ -60,7 +60,7 @@ import { UpdateOrganizationDemoItemDto } from './dtos/update-organization-demo-i
   },
   query: {
     join: {
-      Organization: {
+      organization: {
         alias: 'organization',
         eager: true,
       },

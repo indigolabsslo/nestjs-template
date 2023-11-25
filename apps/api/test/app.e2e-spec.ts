@@ -80,25 +80,25 @@ describe('Admin User (e2e)', () => {
     expect(error).toBeUndefined();
   });
 
-  // it(`/organization/${organization.Id} (PATCH)`, async () => {
-  //   const updateOrganizationDto: UpdateOrganizationDto = {
-  //     Name: 'Organization Test New',
-  //   };
-  //   const { body } = await request(app.getHttpServer())
-  //     .post(`/organization/${organization.Id}`)
-  //     .set('Authorization', `Bearer ${accessToken}`)
-  //     .send(updateOrganizationDto)
-  //     .expect(201);
-  //   const { error } = getOrganizationDtoSchema.validate(body);
-  //   expect(error).toBeUndefined();
-  // });
+  it(`/organization/${organization.id} (PATCH)`, async () => {
+    const updateOrganizationDto: UpdateOrganizationDto = {
+      name: 'Organization Test New',
+    };
+    const { body } = await request(app.getHttpServer())
+      .post(`/organization/${organization.id}`)
+      .set('Authorization', `Bearer ${accessToken}`)
+      .send(updateOrganizationDto)
+      .expect(201);
+    const { error } = getOrganizationDtoSchema.validate(body);
+    expect(error).toBeUndefined();
+  });
 
-  // it(`/organization/${organization.Id} (GET)`, async () => {
-  //   const { body } = await request(app.getHttpServer())
-  //     .get(`/organization/${organization.Id}`)
-  //     .set('Authorization', `Bearer ${accessToken}`)
-  //     .expect(200);
-  //   const { error } = getOrganizationDtoSchema.validate(body);
-  //   expect(error).toBeUndefined();
-  // });
+  it(`/organization/${organization.id} (GET)`, async () => {
+    const { body } = await request(app.getHttpServer())
+      .get(`/organization/${organization.id}`)
+      .set('Authorization', `Bearer ${accessToken}`)
+      .expect(200);
+    const { error } = getOrganizationDtoSchema.validate(body);
+    expect(error).toBeUndefined();
+  });
 });
