@@ -22,5 +22,5 @@ COPY --from=base --chown=node:node /app/node_modules ./node_modules
 COPY --from=base --chown=node:node /app/*.json ./
 COPY --from=build --chown=node:node /app/dist ./dist/
 USER node
-ENV APP_MAIN_FILE=dist/apps/sportion-${APP}/main.js
+ENV APP_MAIN_FILE=dist/apps/${APP}/main.js
 CMD node ${APP_MAIN_FILE}

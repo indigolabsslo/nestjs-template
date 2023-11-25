@@ -11,6 +11,8 @@ import { RedisModule } from './redis/redis.module';
 import { UserModule } from './user/user.module';
 import { DemoItemModule } from './demo-item/demo-item.module';
 import { SupabaseModule } from './supabase/supabase.module';
+import { OrganizationRoleModule } from './organization-role/organization-role.module';
+import { OrganizationPermissionModule } from './organization-permission/organization-permission.module';
 import configValidationSchema from './shared/schemas/config-validation.schema';
 
 @Global()
@@ -48,6 +50,8 @@ import configValidationSchema from './shared/schemas/config-validation.schema';
     RedisModule,
     UserModule,
     SupabaseModule,
+    OrganizationRoleModule,
+    OrganizationPermissionModule,
   ],
 })
 export class LibModule {}

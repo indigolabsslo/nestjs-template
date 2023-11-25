@@ -4,6 +4,7 @@
 
 # Logs
 logs
+!docker/**/logs
 *.log
 npm-debug.log*
 pnpm-debug.log*
