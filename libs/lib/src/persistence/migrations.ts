@@ -1,3 +1,3 @@
-import { InitialMigration1700826781388 } from './migrations/1700826781388-InitialMigration';
+import { InitialMigration1700919327264 } from './migrations/1700919327264-InitialMigration';
 
-export const Migrations: any = [InitialMigration1700826781388];
+export const Migrations: any = [InitialMigration1700919327264];

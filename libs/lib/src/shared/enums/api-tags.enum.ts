@@ -4,4 +4,5 @@ export enum EApiTags {
   Organization = 'Organization',
   OrganizationUser = 'OrganizationUser',
   DemoItem = 'DemoItem',
+  OrganizationRole = 'OrganizationRole',
 }

@@ -4,6 +4,9 @@ import { DemoItem } from '@lib/demo-item/demo-item.entity';
 import { DemoItemService } from '@lib/demo-item/demo-item.service';
 import { CreateDemoItemDto } from '@lib/demo-item/dtos/create-demo-item.dto';
 import { MediaService } from '@lib/media/media.service';
+import { CreateOrganizationRoleDto } from '@lib/organization-role/dtos/create-organization-role.dto';
+import { OrganizationRole } from '@lib/organization-role/organization-role.entity';
+import { OrganizationRoleService } from '@lib/organization-role/organization-role.service';
 import { CreateOrganizationUserDto } from '@lib/organization-user/dtos/create-organization-user.dto';
 import { OrganizationUser } from '@lib/organization-user/organization-user.entity';
 import { OrganizationUserService } from '@lib/organization-user/organization-user.service';
@@ -33,6 +36,7 @@ export class SeedService {
     private mediaService: MediaService,
     private demoItemService: DemoItemService,
     private supabaseService: SupabaseService,
+    private organizationRoleService: OrganizationRoleService,
   ) {
     this.defaultReq = {
       options: { routes: { createOneBase: { returnShallow: true } } },
@@ -225,6 +229,85 @@ export class SeedService {
     ]);
     /***** ORGANIZATION END *****/
 
+    /***** ORGANIZATION ROLE *****/
+    const organizationAdminPermissions = [
+      'OrganizationRole-Create-One',
+      'OrganizationRole-Read-All',
+      'OrganizationRole-Read-One',
+      'OrganizationRole-Replace-One',
+      'OrganizationRole-Update-One',
+      'OrganizationRole-Delete-One',
+      'OrganizationUser-Create-One',
+      'OrganizationUser-Read-All',
+      'OrganizationUser-Read-One',
+      'OrganizationUser-Replace-One',
+      'OrganizationUser-Update-One',
+      'OrganizationUser-Delete-One',
+      'OrganizationDemoItem-Create-One',
+      'OrganizationDemoItem-Read-All',
+      'OrganizationDemoItem-Read-One',
+      'OrganizationDemoItem-Replace-One',
+      'OrganizationDemoItem-Update-One',
+      'OrganizationDemoItem-Delete-One',
+    ];
+    const organizationUserPermissions = [
+      'OrganizationDemoItem-Create-One',
+      'OrganizationDemoItem-Read-All',
+      'OrganizationDemoItem-Read-One',
+      'OrganizationDemoItem-Replace-One',
+      'OrganizationDemoItem-Update-One',
+      'OrganizationDemoItem-Delete-One',
+    ];
+
+    const [
+      organizationRoleAdminOrganization1,
+      organizationRoleUserOrganization1,
+      organizationRoleAdminOrganization2,
+      organizationRoleUserOrganization2,
+    ] = await Promise.all([
+      this.organizationRoleService.createOne(
+        this.defaultReq,
+        {
+          name: 'Organization Role - Admin',
+          organizationId: organization1.id,
+          permissions: organizationAdminPermissions,
+        },
+        CreateOrganizationRoleDto,
+        OrganizationRole,
+      ),
+      this.organizationRoleService.createOne(
+        this.defaultReq,
+        {
+          name: 'Organization Role - User',
+          organizationId: organization1.id,
+          permissions: organizationUserPermissions,
+        },
+        CreateOrganizationRoleDto,
+        OrganizationRole,
+      ),
+      this.organizationRoleService.createOne(
+        this.defaultReq,
+        {
+          name: 'Organization Role - Admin',
+          organizationId: organization2.id,
+          permissions: organizationAdminPermissions,
+        },
+        CreateOrganizationRoleDto,
+        OrganizationRole,
+      ),
+      this.organizationRoleService.createOne(
+        this.defaultReq,
+        {
+          name: 'Organization Role - User',
+          organizationId: organization2.id,
+          permissions: organizationUserPermissions,
+        },
+        CreateOrganizationRoleDto,
+        OrganizationRole,
+      ),
+    ]);
+    /***** ORGANIZATION ROLE END *****/
+
     /***** ORGANIZATION USER *****/
     const [
       organizationUserOrganization1User1,
@@ -241,6 +324,7 @@ export class SeedService {
         {
           organizationId: organization1.id,
           userId: user1.id,
+          organizationRoleId: organizationRoleAdminOrganization1.id,
         },
         CreateOrganizationUserDto,
         OrganizationUser,
@@ -250,6 +334,7 @@ export class SeedService {
         {
           organizationId: organization1.id,
           userId: user2.id,
+          organizationRoleId: organizationRoleAdminOrganization1.id,
         },
         CreateOrganizationUserDto,
         OrganizationUser,
@@ -259,6 +344,7 @@ export class SeedService {
         {
           organizationId: organization1.id,
           userId: user3.id,
+          organizationRoleId: organizationRoleUserOrganization1.id,
         },
         CreateOrganizationUserDto,
         OrganizationUser,
@@ -268,6 +354,7 @@ export class SeedService {
         {
           organizationId: organization1.id,
           userId: user4.id,
+          organizationRoleId: organizationRoleUserOrganization1.id,
         },
         CreateOrganizationUserDto,
         OrganizationUser,
@@ -277,6 +364,7 @@ export class SeedService {
         {
           organizationId: organization2.id,
           userId: user1.id,
+          organizationRoleId: organizationRoleUserOrganization2.id,
         },
         CreateOrganizationUserDto,
         OrganizationUser,
@@ -286,6 +374,7 @@ export class SeedService {
         {
           organizationId: organization2.id,
           userId: user2.id,
+          organizationRoleId: organizationRoleUserOrganization2.id,
         },
         CreateOrganizationUserDto,
         OrganizationUser,
@@ -295,6 +384,7 @@ export class SeedService {
         {
           organizationId: organization2.id,
           userId: user3.id,
+          organizationRoleId: organizationRoleAdminOrganization2.id,
         },
         CreateOrganizationUserDto,
         OrganizationUser,
@@ -304,6 +394,7 @@ export class SeedService {
         {
           organizationId: organization2.id,
           userId: user4.id,
+          organizationRoleId: organizationRoleAdminOrganization2.id,
         },
         CreateOrganizationUserDto,
         OrganizationUser,

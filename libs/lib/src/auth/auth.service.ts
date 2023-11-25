@@ -23,7 +23,7 @@ export class AuthService {
           supabaseId: payload.sub,
         },
         {
-          Email: payload.email,
+          email: payload.email,
         },
       ],
     });
@@ -32,9 +32,9 @@ export class AuthService {
       user = await this.userService.createOne(
         crudRequest,
         {
-          Email: payload.email ?? '',
-          Role: EUserRole.USER,
-          Name: payload.name ?? null,
+          email: payload.email ?? '',
+          role: EUserRole.USER,
+          name: payload.name ?? null,
           // appleId: payload.firebase.identities['apple.com']?.length
           //   ? payload.firebase.identities['apple.com'][0]
           //   : null,
@@ -58,8 +58,8 @@ export class AuthService {
       user = await this.userService.updateOne(
         crudRequest,
         {
-          Email: payload.email,
-          Name: user.Name ?? payload.namem,
+          email: payload.email,
+          name: user.name ?? payload.name,
           // appleId: payload.firebase.identities['apple.com']?.length
           //   ? payload.firebase.identities['apple.com'][0]
           //   : undefined,

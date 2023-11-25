@@ -6,6 +6,10 @@ import { ApiProperty } from '@nestjs/swagger';
 export class GetOrganizationRoleDto extends GetDto {
   @ApiProperty()
   @AutoMap()
+  name: string;
+
+  @ApiProperty()
+  @AutoMap()
   permissions: string[];
 
   @ApiProperty({ type: GetOrganizationDto })

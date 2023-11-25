@@ -66,11 +66,11 @@ describe('Admin User (e2e)', () => {
 
   it('/organization (POST)', async () => {
     const createOrganizationDto: CreateOrganizationDto = {
-      Name: 'Organization Test',
-      imageId: organizationImage.Id,
+      name: 'Organization Test',
+      imageId: organizationImage.id,
     };
     const { body } = await request(app.getHttpServer())
-      .post('/organization/' + organization.Id)
+      .post('/organization/' + organization.id)
       .set('Authorization', `Bearer ${accessToken}`)
       .send(createOrganizationDto)
       .expect(201);

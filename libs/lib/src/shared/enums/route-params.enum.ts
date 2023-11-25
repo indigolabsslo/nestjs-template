@@ -4,4 +4,5 @@ export enum ERouteParams {
   OrganizationUserId = 'organizationUserId',
   MediaId = 'mediaId',
   DemoItemId = 'demoItemId',
+  OrganizationRoleId = 'organizationRoleId',
 }

@@ -31,14 +31,14 @@ export class MediaSubscriber implements EntitySubscriberInterface<Media> {
   }
 
   async afterLoad(media: Media) {
-    if (media.Key) {
-      media.Url =
+    if (media.key) {
+      media.url =
         //TODO: Change this
-        media.Public || true
-          ? await this.supabaseService.createPublicUrl(this.bucket, media.Key)
+        media.public || true
+          ? await this.supabaseService.createPublicUrl(this.bucket, media.key)
           : await this.supabaseService.createSignedUrl(
               this.bucket,
-              media.Key,
+              media.key,
               this.signedUrlExpiration,
             );
     }

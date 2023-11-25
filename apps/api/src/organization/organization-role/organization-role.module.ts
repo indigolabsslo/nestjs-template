@@ -2,6 +2,6 @@ import { Module } from '@nestjs/common';
 import { OrganizationRoleController } from './organization-role.controller';
 
 @Module({
-  controllers: [OrganizationRoleController]
+  controllers: [OrganizationRoleController],
 })
 export class OrganizationRoleModule {}

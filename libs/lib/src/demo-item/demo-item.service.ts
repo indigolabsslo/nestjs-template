@@ -34,12 +34,12 @@ export class DemoItemService extends TypeOrmCrudService<
     //Organization
     if (demoItemDto.organizationId) {
       const organization = await this.organizationService.findOne({
-        where: { Id: demoItemDto.organizationId },
+        where: { id: demoItemDto.organizationId },
       });
       if (!organization) {
         throw new BadRequestException();
       }
-      demoItem.Organization = organization;
+      demoItem.organization = organization;
     }
 
     return demoItem;

@@ -14,6 +14,7 @@ import { SupabaseModule } from './supabase/supabase.module';
 import { OrganizationRoleModule } from './organization-role/organization-role.module';
 import { OrganizationPermissionModule } from './organization-permission/organization-permission.module';
 import configValidationSchema from './shared/schemas/config-validation.schema';
+import { SharedModule } from './shared/shared.module';
 
 @Global()
 @Module({
@@ -28,6 +29,9 @@ import configValidationSchema from './shared/schemas/config-validation.schema';
     RedisModule,
     UserModule,
     SupabaseModule,
+    OrganizationRoleModule,
+    OrganizationPermissionModule,
+    SharedModule,
   ],
   imports: [
     ConfigModule.forRoot({
@@ -52,6 +56,7 @@ import configValidationSchema from './shared/schemas/config-validation.schema';
     SupabaseModule,
     OrganizationRoleModule,
     OrganizationPermissionModule,
+    SharedModule,
   ],
 })
 export class LibModule {}

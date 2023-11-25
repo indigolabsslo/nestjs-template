@@ -9,7 +9,9 @@ describe('OrganizationPermissionService', () => {
       providers: [OrganizationPermissionService],
     }).compile();
 
-    service = module.get<OrganizationPermissionService>(OrganizationPermissionService);
+    service = module.get<OrganizationPermissionService>(
+      OrganizationPermissionService,
+    );
   });
 
   it('should be defined', () => {

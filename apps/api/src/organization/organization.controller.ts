@@ -1,6 +1,11 @@
 import { Mapper } from '@automapper/core';
 import { InjectMapper } from '@automapper/nestjs';
-import { Crud, CrudController, Feature } from '@indigolabs/crud';
+import {
+  Crud,
+  CrudController,
+  CrudRequestInterceptor,
+  Feature,
+} from '@indigolabs/crud';
 import { Organization } from '@lib/organization/organization.entity';
 import { OrganizationService } from '@lib/organization/organization.service';
 import { CreateOrganizationDto } from '@lib/organization/dtos/create-organization.dto';
@@ -11,8 +16,9 @@ import { EApiTags } from '@lib/shared/enums/api-tags.enum';
 import { EControllers } from '@lib/shared/enums/controllers.enum';
 import { ECrudFeatures } from '@lib/shared/enums/crud-features.enum';
 import { ERouteParams } from '@lib/shared/enums/route-params.enum';
-import { Controller } from '@nestjs/common';
+import { Controller, Get, UseInterceptors } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { OrganizationPermissionService } from '@lib/organization-permission/organization-permission.service';
 
 @Crud({
   model: {
@@ -68,5 +74,12 @@ export class OrganizationController
     readonly service: OrganizationService,
     @InjectMapper()
     readonly mapper: Mapper,
+    private organizationPermissionService: OrganizationPermissionService,
   ) {}
+
+  @UseInterceptors(CrudRequestInterceptor)
+  @Get(EControllers.OrganizationPermission)
+  async exportSome() {
+    return this.organizationPermissionService.getMany();
+  }
 }

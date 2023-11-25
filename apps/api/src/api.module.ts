@@ -11,7 +11,7 @@ import { LibModule } from '@lib';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MediaModule } from './media/media.module';
-import { OrganizationRoleModule } from './organization-role/organization-role.module';
+import { OrganizationRoleModule } from './organization/organization-role/organization-role.module';
 
 @Module({
   imports: [
