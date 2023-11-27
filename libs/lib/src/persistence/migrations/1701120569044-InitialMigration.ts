@@ -1,9 +1,12 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-export class InitialMigration1700926429861 implements MigrationInterface {
-  name = 'InitialMigration1700926429861';
+export class InitialMigration1701120569044 implements MigrationInterface {
+  name = 'InitialMigration1701120569044';
 
   public async up(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.query(
+      `CREATE TABLE "base_entity" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "createDate" TIMESTAMP NOT NULL DEFAULT now(), "updateDate" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT "PK_03e6c58047b7a4b3f6de0bfa8d7" PRIMARY KEY ("id"))`,
+    );
     await queryRunner.query(
       `CREATE TYPE "public"."EMediaType" AS ENUM('image', 'video')`,
     );
@@ -83,5 +86,6 @@ export class InitialMigration1700926429861 implements MigrationInterface {
     await queryRunner.query(`DROP TABLE "organization-role"`);
     await queryRunner.query(`DROP TABLE "media"`);
     await queryRunner.query(`DROP TYPE "public"."EMediaType"`);
+    await queryRunner.query(`DROP TABLE "base_entity"`);
   }
 }
