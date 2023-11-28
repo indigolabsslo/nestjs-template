@@ -1,5 +1,6 @@
 import { CrudActions, CrudConfigService } from '@indigolabs/crud';
 import { crudGlobalConfig } from '@lib/shared/config/crud-global.config';
+import { EControllers } from '@lib/shared/enums/controllers.enum';
 import { ECrudFeatures } from '@lib/shared/enums/crud-features.enum';
 import { ERouteParams } from '@lib/shared/enums/route-params.enum';
 CrudConfigService.load(crudGlobalConfig);
@@ -61,6 +62,10 @@ async function bootstrap() {
     ERouteParams: {
       type: 'string',
       enum: Object.values(ERouteParams),
+    },
+    EControllers: {
+      type: 'string',
+      enum: Object.values(EControllers),
     },
   };
   SwaggerModule.setup('api', app, document, {

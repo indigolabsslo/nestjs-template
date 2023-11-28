@@ -13,7 +13,7 @@ import { AuthPayloadDto } from '../dtos/auth-payload.dto';
 export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
   public constructor(
     private authService: AuthService,
-    private configService: ConfigService,
+    configService: ConfigService,
     private redisService: RedisService,
   ) {
     super({
@@ -31,13 +31,12 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
         },
         params: {
           [ERouteParams.UserId]: {
-            field: 'Id',
+            field: 'id',
             type: 'uuid',
             primary: true,
           },
         },
         query: {
-          exclude: [],
           join: {
             image: {
               alias: 'image',
@@ -81,18 +80,14 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
     payload: AuthPayloadDto,
     crudRequest: CrudRequest,
   ): Promise<User | null> {
-    const user = await this.redisService.getCachedOrInvoke(
-      'VALIDATED_USER_' + payload.sub,
-      () => this.authService.validateUser(payload, crudRequest),
-    );
+    // const user = await this.redisService.getCachedOrInvoke(
+    //   'VALIDATED_USER_' + payload.sub,
+    //   () => this.authService.validateUser(payload, crudRequest),
+    // );
+    const user = await this.authService.validateUser(payload, crudRequest);
     if (!user) {
       return null;
     }
     return user;
-    return null;
-  }
-
-  authenticate(req) {
-    super.authenticate(req);
   }
 }

@@ -4,6 +4,7 @@ import { Feature } from '@indigolabs/crud';
 import { GetMediaDto } from '@lib/media/dtos/get-media.dto';
 import { Media } from '@lib/media/media.entity';
 import { MediaService } from '@lib/media/media.service';
+import { Public } from '@lib/shared/decorators/public.decorator';
 import { EApiTags } from '@lib/shared/enums/api-tags.enum';
 import { EControllers } from '@lib/shared/enums/controllers.enum';
 import { ECrudFeatures } from '@lib/shared/enums/crud-features.enum';
@@ -36,6 +37,7 @@ export class MediaController {
   @ApiOkResponse({
     type: GetMediaDto,
   })
+  @Public()
   @Post('upload')
   @ApiConsumes('multipart/form-data')
   @ApiBody({

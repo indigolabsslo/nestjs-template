@@ -9,6 +9,7 @@ import {
   ParsedRequest,
 } from '@indigolabs/crud';
 import { CurrentUser } from '@lib/shared/decorators/current-user.decorator';
+import { Public } from '@lib/shared/decorators/public.decorator';
 import { EApiTags } from '@lib/shared/enums/api-tags.enum';
 import { EControllers } from '@lib/shared/enums/controllers.enum';
 import { ECrudFeatures } from '@lib/shared/enums/crud-features.enum';
@@ -91,6 +92,7 @@ export class UserController
     description: 'Retrieve a calling User',
     type: GetUserDto,
   })
+  @Public()
   @Get('me')
   async me(
     @ParsedRequest() req: CrudRequest,

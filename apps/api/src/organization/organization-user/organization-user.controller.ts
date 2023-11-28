@@ -51,6 +51,10 @@ import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
         alias: 'user',
         eager: true,
       },
+      organizationRole: {
+        alias: 'organizationRole',
+        eager: true,
+      },
     },
   },
 })

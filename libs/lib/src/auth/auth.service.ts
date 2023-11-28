@@ -56,7 +56,20 @@ export class AuthService {
     } else {
       // Update user values if needed
       user = await this.userService.updateOne(
-        crudRequest,
+        {
+          ...crudRequest,
+          parsed: {
+            ...crudRequest.parsed,
+            paramsFilter: [
+              ...crudRequest.parsed.paramsFilter,
+              { field: 'id', operator: '$eq', value: user.id },
+            ],
+            search: {
+              ...crudRequest.parsed.search,
+              $and: [undefined, { id: { $eq: user.id } }, {}] as never,
+            },
+          },
+        },
         {
           email: payload.email,
           name: user.name ?? payload.name,
