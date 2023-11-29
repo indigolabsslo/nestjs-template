@@ -7,7 +7,7 @@ const BASE_PATH = __dirname;
 const BASE_ENTITIES_PATH = path.join(BASE_PATH, '..');
 const MIGRATIONS_PATH = path.join(BASE_PATH, 'migrations');
 const ENTITIES_GLOB = path.join(BASE_PATH, '../**/*.entity{.ts,.js}');
-
+const EXCLUDE_ENTITIES = ['BaseEntity'];
 function writeToFile(filename, content) {
   fs.writeFileSync(path.join(BASE_PATH, filename), content);
 }
@@ -53,12 +53,13 @@ function convertFileNameToClassName(fileName) {
 }
 
 function generateImportStatements(files) {
+  console.log(files);
+
   return files
     .map((file) => {
       const fileName = path.basename(file, path.extname(file));
       const className = convertFileNameToClassName(fileName);
       const directory = path.dirname(path.relative(BASE_ENTITIES_PATH, file));
-
       return `import { ${className} } from '@lib/${directory}/${fileName}';`;
     })
     .join('\n');
@@ -67,7 +68,8 @@ function generateImportStatements(files) {
 function generateEntitiesArray(files) {
   return files.map((file) => {
     const fileName = path.basename(file, path.extname(file));
-    return convertFileNameToClassName(fileName);
+    const className = convertFileNameToClassName(fileName);
+    return className;
   });
 }
 // FIND ENTITIES
@@ -76,9 +78,14 @@ glob(ENTITIES_GLOB, (err, files) => {
     console.error('Error finding entity files:', err);
     return;
   }
+  const filteredFiles = files.filter((file) => {
+    const fileName = path.basename(file, path.extname(file));
+    const className = convertFileNameToClassName(fileName);
+    return !EXCLUDE_ENTITIES.includes(className);
+  });
 
-  const importStatements = generateImportStatements(files);
-  const entitiesArray = generateEntitiesArray(files);
+  const importStatements = generateImportStatements(filteredFiles);
+  const entitiesArray = generateEntitiesArray(filteredFiles);
   const content = `${importStatements}\n\nexport const Entities = [\n  ${entitiesArray.join(
     ',\n  ',
   )},\n];\n`;
