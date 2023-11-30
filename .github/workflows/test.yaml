@@ -26,8 +26,7 @@ jobs:
         image: redis:7-alpine
         ports:
           - 6379:6379
-        env:
-          REDIS_HOST_PASSWORD: redis-password
+        command: redis-server --save 20 1 --loglevel warning --requirepass redis-password
         options: >-
           --health-cmd "redis-cli ping"
           --health-interval 10s
