@@ -44,6 +44,11 @@ jobs:
         with:
           node-version: 20.x
       
+      - name: Set environment variables
+        run: |
+          echo "TYPEORM_HOST=postgres" >> $GITHUB_ENV
+          echo "REDIS_HOST=redis" >> $GITHUB_ENV
+
       - name: Install Yarn
         run: npm install -g yarn
 
