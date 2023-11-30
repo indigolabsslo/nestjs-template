@@ -17,7 +17,7 @@ import { RedisClientOptions } from 'redis';
           host: configService.getOrThrow<string>('REDIS_HOST'),
           port: configService.getOrThrow<number>('REDIS_PORT'),
         },
-        password: configService.getOrThrow<string>('REDIS_PASSWORD'),
+        // password: configService.getOrThrow<string>('REDIS_PASSWORD'),
         ttl: configService.getOrThrow<number>('REDIS_TTL'),
         db: configService.getOrThrow<number>('REDIS_DB'),
       }),

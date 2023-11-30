@@ -37,7 +37,7 @@ export default Joi.object({
   REDIS_PORT: Joi.number().default(6379),
   REDIS_TTL: Joi.number().default(3600),
   REDIS_DB: Joi.number().default(0),
-  REDIS_PASSWORD: Joi.string().default('redis-password'),
+  // REDIS_PASSWORD: Joi.string().default('redis-password'),
   // SUPABSE
   SUPABASE_URL: Joi.string().default('http://localhost:8000'),
   SUPABASE_KEY: Joi.string().default(

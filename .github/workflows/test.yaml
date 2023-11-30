@@ -52,15 +52,9 @@ jobs:
 
       - name: Seed database
         run: yarn seed
-        env:
-          REDIS_PASSWORD: ""
       
       - name: Run tests
         run: yarn test
-        env:
-          REDIS_PASSWORD: ""
       
       - name: Run E2E tests
         run: yarn test:e2e
-        env:
-          REDIS_PASSWORD: ""
