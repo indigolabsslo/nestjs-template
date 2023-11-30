@@ -54,18 +54,18 @@ jobs:
 
       - name: Seed database
         run: yarn seed
-        env:
-          REDIS_HOST: redis
-          TYPEORM_HOST: postgres
+        # env:
+        #   REDIS_HOST: redis
+        #   TYPEORM_HOST: postgres
       
       - name: Run tests
         run: yarn test
-        env:
-          REDIS_HOST: redis
-          TYPEORM_HOST: postgres
+        # env:
+        #   REDIS_HOST: redis
+        #   TYPEORM_HOST: postgres
       
       - name: Run E2E tests
         run: yarn test:e2e
-        env:
-          REDIS_HOST: redis
-          TYPEORM_HOST: postgres
+        # env:
+        #   REDIS_HOST: redis
+        #   TYPEORM_HOST: postgres
