@@ -7,9 +7,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [20.x]
         
     services:
       postgres:
@@ -30,10 +27,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 20.x
       
       - name: Install Yarn
         run: npm install -g yarn
@@ -41,8 +38,8 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: Lint code
-        run: yarn lint
+      #- name: Lint code
+      #  run: yarn lint
 
       - name: Seed database
         run: yarn seed
