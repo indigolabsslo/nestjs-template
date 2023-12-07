@@ -58,3 +58,7 @@ jobs:
       
       - name: Run E2E tests
         run: yarn test:e2e
+        env:
+          SUPABASE_URL: https://supabase.blog.indigo.si
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          SUPABASE_JWT_SECRET: ${{ secrets.SUPABASE_JWT_SECRET }}
