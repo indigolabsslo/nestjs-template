@@ -8,8 +8,8 @@ import { User } from '@lib/user/user.entity';
 export const Entities = [
   DemoItem,
   Media,
-  Organization,
-  OrganizationUser,
   OrganizationRole,
+  OrganizationUser,
+  Organization,
   User,
 ];
