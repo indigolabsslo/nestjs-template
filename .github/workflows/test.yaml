@@ -47,16 +47,13 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: PWD
-        run: pwd
-
       - name: Seed database
         run: yarn seed
         env:
           SUPABASE_URL: https://supabase.blog.indigo.si
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
           SUPABASE_JWT_SECRET: ${{ secrets.SUPABASE_JWT_SECRET }}
-          SEED_FILES_PATH: /apps/seed/files
+          SEED_FILES_PATH: /home/runner/work/nestjs-template/nestjs-template/apps/seed/files
       
       - name: Run tests
         run: yarn test
