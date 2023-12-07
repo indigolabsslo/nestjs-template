@@ -52,9 +52,17 @@ jobs:
 
       - name: Seed database
         run: yarn seed
+        env:
+          SUPABASE_URL: https://supabase.blog.indigo.si
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          SUPABASE_JWT_SECRET: ${{ secrets.SUPABASE_JWT_SECRET }}
       
       - name: Run tests
         run: yarn test
+        env:
+          SUPABASE_URL: https://supabase.blog.indigo.si
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          SUPABASE_JWT_SECRET: ${{ secrets.SUPABASE_JWT_SECRET }}
       
       - name: Run E2E tests
         run: yarn test:e2e
