@@ -100,96 +100,71 @@ export class SeedService {
 
     /***** USER *****/
     const [admin, user1, user2, user3, user4] = await Promise.all([
-      this.userService.createOne(
-        this.defaultReq,
-        {
-          email: 'admin@indigo.si',
-          name: 'Admin',
-          role: EUserRole.ADMIN,
-          appleId: null,
-          avatarId: null,
-          facebookId: null,
-          supabaseId: null,
-          googleId: null,
-          socialAvatarUrl: null,
-          onboardingStatus: EOnboardingStatus.COMPLETE,
-          status: EUserStatus.ACTIVE,
-        },
-        CreateUserDto,
-        User,
-      ),
-      this.userService.createOne(
-        this.defaultReq,
-        {
-          email: 'user1@indigo.si',
-          name: 'User 1',
-          role: EUserRole.USER,
-          appleId: null,
-          avatarId: null,
-          facebookId: null,
-          supabaseId: null,
-          googleId: null,
-          socialAvatarUrl: null,
-          onboardingStatus: EOnboardingStatus.COMPLETE,
-          status: EUserStatus.ACTIVE,
-        },
-        CreateUserDto,
-        User,
-      ),
-      this.userService.createOne(
-        this.defaultReq,
-        {
-          email: 'user2@indigo.si',
-          name: 'User 2',
-          role: EUserRole.USER,
-          appleId: null,
-          avatarId: null,
-          facebookId: null,
-          supabaseId: null,
-          googleId: null,
-          socialAvatarUrl: null,
-          onboardingStatus: EOnboardingStatus.COMPLETE,
-          status: EUserStatus.ACTIVE,
-        },
-        CreateUserDto,
-        User,
-      ),
-      this.userService.createOne(
-        this.defaultReq,
-        {
-          email: 'user3@indigo.si',
-          name: 'User 3',
-          role: EUserRole.USER,
-          appleId: null,
-          avatarId: null,
-          facebookId: null,
-          supabaseId: null,
-          googleId: null,
-          socialAvatarUrl: null,
-          onboardingStatus: EOnboardingStatus.COMPLETE,
-          status: EUserStatus.ACTIVE,
-        },
-        CreateUserDto,
-        User,
-      ),
-      this.userService.createOne(
-        this.defaultReq,
-        {
-          email: 'user4@indigo.si',
-          name: 'User 4',
-          role: EUserRole.USER,
-          appleId: null,
-          avatarId: null,
-          facebookId: null,
-          supabaseId: null,
-          googleId: null,
-          socialAvatarUrl: null,
-          onboardingStatus: EOnboardingStatus.COMPLETE,
-          status: EUserStatus.ACTIVE,
-        },
-        CreateUserDto,
-        User,
-      ),
+      this.userService.createOne(this.defaultReq, {
+        email: 'admin@indigo.si',
+        name: 'Admin',
+        role: EUserRole.ADMIN,
+        appleId: null,
+        avatarId: null,
+        facebookId: null,
+        supabaseId: null,
+        googleId: null,
+        socialAvatarUrl: null,
+        onboardingStatus: EOnboardingStatus.COMPLETE,
+        status: EUserStatus.ACTIVE,
+      }),
+      this.userService.createOne(this.defaultReq, {
+        email: 'user1@indigo.si',
+        name: 'User 1',
+        role: EUserRole.USER,
+        appleId: null,
+        avatarId: null,
+        facebookId: null,
+        supabaseId: null,
+        googleId: null,
+        socialAvatarUrl: null,
+        onboardingStatus: EOnboardingStatus.COMPLETE,
+        status: EUserStatus.ACTIVE,
+      }),
+      this.userService.createOne(this.defaultReq, {
+        email: 'user2@indigo.si',
+        name: 'User 2',
+        role: EUserRole.USER,
+        appleId: null,
+        avatarId: null,
+        facebookId: null,
+        supabaseId: null,
+        googleId: null,
+        socialAvatarUrl: null,
+        onboardingStatus: EOnboardingStatus.COMPLETE,
+        status: EUserStatus.ACTIVE,
+      }),
+      this.userService.createOne(this.defaultReq, {
+        email: 'user3@indigo.si',
+        name: 'User 3',
+        role: EUserRole.USER,
+        appleId: null,
+        avatarId: null,
+        facebookId: null,
+        supabaseId: null,
+        googleId: null,
+        socialAvatarUrl: null,
+        onboardingStatus: EOnboardingStatus.COMPLETE,
+        status: EUserStatus.ACTIVE,
+      }),
+      this.userService.createOne(this.defaultReq, {
+        email: 'user4@indigo.si',
+        name: 'User 4',
+        role: EUserRole.USER,
+        appleId: null,
+        avatarId: null,
+        facebookId: null,
+        supabaseId: null,
+        googleId: null,
+        socialAvatarUrl: null,
+        onboardingStatus: EOnboardingStatus.COMPLETE,
+        status: EUserStatus.ACTIVE,
+      }),
     ]);
     /***** USER END *****/
 
@@ -208,24 +183,14 @@ export class SeedService {
     );
 
     const [organization1, organization2] = await Promise.all([
-      this.organizationService.createOne(
-        this.defaultReq,
-        {
-          name: 'Organization 1',
-          imageId: organization1Image.id,
-        },
-        CreateOrganizationDto,
-        Organization,
-      ),
-      this.organizationService.createOne(
-        this.defaultReq,
-        {
-          name: 'Organization 2',
-          imageId: organization2Image.id,
-        },
-        CreateOrganizationDto,
-        Organization,
-      ),
+      this.organizationService.createOne(this.defaultReq, {
+        name: 'Organization 1',
+        imageId: organization1Image.id,
+      }),
+      this.organizationService.createOne(this.defaultReq, {
+        name: 'Organization 2',
+        imageId: organization2Image.id,
+      }),
     ]);
     /***** ORGANIZATION END *****/
 
@@ -265,46 +230,26 @@ export class SeedService {
       organizationRoleAdminOrganization2,
       organizationRoleUserOrganization2,
     ] = await Promise.all([
-      this.organizationRoleService.createOne(
-        this.defaultReq,
-        {
-          name: 'Organization Role - Admin',
-          organizationId: organization1.id,
-          permissions: organizationAdminPermissions,
-        },
-        CreateOrganizationRoleDto,
-        OrganizationRole,
-      ),
-      this.organizationRoleService.createOne(
-        this.defaultReq,
-        {
-          name: 'Organization Role - User',
-          organizationId: organization1.id,
-          permissions: organizationUserPermissions,
-        },
-        CreateOrganizationRoleDto,
-        OrganizationRole,
-      ),
-      this.organizationRoleService.createOne(
-        this.defaultReq,
-        {
-          name: 'Organization Role - Admin',
-          organizationId: organization2.id,
-          permissions: organizationAdminPermissions,
-        },
-        CreateOrganizationRoleDto,
-        OrganizationRole,
-      ),
-      this.organizationRoleService.createOne(
-        this.defaultReq,
-        {
-          name: 'Organization Role - User',
-          organizationId: organization2.id,
-          permissions: organizationUserPermissions,
-        },
-        CreateOrganizationRoleDto,
-        OrganizationRole,
-      ),
+      this.organizationRoleService.createOne(this.defaultReq, {
+        name: 'Organization Role - Admin',
+        organizationId: organization1.id,
+        permissions: organizationAdminPermissions,
+      }),
+      this.organizationRoleService.createOne(this.defaultReq, {
+        name: 'Organization Role - User',
+        organizationId: organization1.id,
+        permissions: organizationUserPermissions,
+      }),
+      this.organizationRoleService.createOne(this.defaultReq, {
+        name: 'Organization Role - Admin',
+        organizationId: organization2.id,
+        permissions: organizationAdminPermissions,
+      }),
+      this.organizationRoleService.createOne(this.defaultReq, {
+        name: 'Organization Role - User',
+        organizationId: organization2.id,
+        permissions: organizationUserPermissions,
+      }),
     ]);
     /***** ORGANIZATION ROLE END *****/
 
@@ -319,86 +264,46 @@ export class SeedService {
       organizationUserOrganization2User3,
       organizationUserOrganization2User4,
     ] = await Promise.all([
-      this.organizationUserService.createOne(
-        this.defaultReq,
-        {
-          organizationId: organization1.id,
-          userId: user1.id,
-          organizationRoleId: organizationRoleAdminOrganization1.id,
-        },
-        CreateOrganizationUserDto,
-        OrganizationUser,
-      ),
-      this.organizationUserService.createOne(
-        this.defaultReq,
-        {
-          organizationId: organization1.id,
-          userId: user2.id,
-          organizationRoleId: organizationRoleAdminOrganization1.id,
-        },
-        CreateOrganizationUserDto,
-        OrganizationUser,
-      ),
-      this.organizationUserService.createOne(
-        this.defaultReq,
-        {
-          organizationId: organization1.id,
-          userId: user3.id,
-          organizationRoleId: organizationRoleUserOrganization1.id,
-        },
-        CreateOrganizationUserDto,
-        OrganizationUser,
-      ),
-      this.organizationUserService.createOne(
-        this.defaultReq,
-        {
-          organizationId: organization1.id,
-          userId: user4.id,
-          organizationRoleId: organizationRoleUserOrganization1.id,
-        },
-        CreateOrganizationUserDto,
-        OrganizationUser,
-      ),
-      this.organizationUserService.createOne(
-        this.defaultReq,
-        {
-          organizationId: organization2.id,
-          userId: user1.id,
-          organizationRoleId: organizationRoleUserOrganization2.id,
-        },
-        CreateOrganizationUserDto,
-        OrganizationUser,
-      ),
-      this.organizationUserService.createOne(
-        this.defaultReq,
-        {
-          organizationId: organization2.id,
-          userId: user2.id,
-          organizationRoleId: organizationRoleUserOrganization2.id,
-        },
-        CreateOrganizationUserDto,
-        OrganizationUser,
-      ),
-      this.organizationUserService.createOne(
-        this.defaultReq,
-        {
-          organizationId: organization2.id,
-          userId: user3.id,
-          organizationRoleId: organizationRoleAdminOrganization2.id,
-        },
-        CreateOrganizationUserDto,
-        OrganizationUser,
-      ),
-      this.organizationUserService.createOne(
-        this.defaultReq,
-        {
-          organizationId: organization2.id,
-          userId: user4.id,
-          organizationRoleId: organizationRoleAdminOrganization2.id,
-        },
-        CreateOrganizationUserDto,
-        OrganizationUser,
-      ),
+      this.organizationUserService.createOne(this.defaultReq, {
+        organizationId: organization1.id,
+        userId: user1.id,
+        organizationRoleId: organizationRoleAdminOrganization1.id,
+      }),
+      this.organizationUserService.createOne(this.defaultReq, {
+        organizationId: organization1.id,
+        userId: user2.id,
+        organizationRoleId: organizationRoleAdminOrganization1.id,
+      }),
+      this.organizationUserService.createOne(this.defaultReq, {
+        organizationId: organization1.id,
+        userId: user3.id,
+        organizationRoleId: organizationRoleUserOrganization1.id,
+      }),
+      this.organizationUserService.createOne(this.defaultReq, {
+        organizationId: organization1.id,
+        userId: user4.id,
+        organizationRoleId: organizationRoleUserOrganization1.id,
+      }),
+      this.organizationUserService.createOne(this.defaultReq, {
+        organizationId: organization2.id,
+        userId: user1.id,
+        organizationRoleId: organizationRoleUserOrganization2.id,
+      }),
+      this.organizationUserService.createOne(this.defaultReq, {
+        organizationId: organization2.id,
+        userId: user2.id,
+        organizationRoleId: organizationRoleUserOrganization2.id,
+      }),
+      this.organizationUserService.createOne(this.defaultReq, {
+        organizationId: organization2.id,
+        userId: user3.id,
+        organizationRoleId: organizationRoleAdminOrganization2.id,
+      }),
+      this.organizationUserService.createOne(this.defaultReq, {
+        organizationId: organization2.id,
+        userId: user4.id,
+        organizationRoleId: organizationRoleAdminOrganization2.id,
+      }),
     ]);
     /***** ORGANIZATION USER END *****/
 
@@ -409,42 +314,22 @@ export class SeedService {
       demoItemOrganization2DemoItem1,
       demoItemOrganization2DemoItem2,
     ] = await Promise.all([
-      this.demoItemService.createOne(
-        this.defaultReq,
-        {
-          name: 'Demo item 1 in organization 1',
-          organizationId: organization1.id,
-        },
-        CreateDemoItemDto,
-        DemoItem,
-      ),
-      this.demoItemService.createOne(
-        this.defaultReq,
-        {
-          name: 'Demo item 2 in organization 1',
-          organizationId: organization1.id,
-        },
-        CreateDemoItemDto,
-        DemoItem,
-      ),
-      this.demoItemService.createOne(
-        this.defaultReq,
-        {
-          name: 'Demo item 1 in organization 2',
-          organizationId: organization1.id,
-        },
-        CreateDemoItemDto,
-        DemoItem,
-      ),
-      this.demoItemService.createOne(
-        this.defaultReq,
-        {
-          name: 'Demo item 2 in organization 2',
-          organizationId: organization1.id,
-        },
-        CreateDemoItemDto,
-        DemoItem,
-      ),
+      this.demoItemService.createOne(this.defaultReq, {
+        name: 'Demo item 1 in organization 1',
+        organizationId: organization1.id,
+      }),
+      this.demoItemService.createOne(this.defaultReq, {
+        name: 'Demo item 2 in organization 1',
+        organizationId: organization1.id,
+      }),
+      this.demoItemService.createOne(this.defaultReq, {
+        name: 'Demo item 1 in organization 2',
+        organizationId: organization1.id,
+      }),
+      this.demoItemService.createOne(this.defaultReq, {
+        name: 'Demo item 2 in organization 2',
+        organizationId: organization1.id,
+      }),
     ]);
     /***** DEMO ITEM END *****/
   }

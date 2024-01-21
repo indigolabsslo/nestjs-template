@@ -1,6 +1,4 @@
 import { CrudRequest } from '@indigolabs/crud';
-import { CreateUserDto } from '@lib/user/dtos/create-user.dto';
-import { UpdateUserDto } from '@lib/user/dtos/update-user.dto';
 import { EOnboardingStatus } from '@lib/user/enums/onboarding-status.enum';
 import { EUserRole } from '@lib/user/enums/user-role.enum';
 import { EUserStatus } from '@lib/user/enums/user-status.enum';
@@ -29,30 +27,25 @@ export class AuthService {
     });
     if (!user) {
       // Create new user
-      user = await this.userService.createOne(
-        crudRequest,
-        {
-          email: payload.email ?? '',
-          role: EUserRole.USER,
-          name: payload.name ?? null,
-          // appleId: payload.firebase.identities['apple.com']?.length
-          //   ? payload.firebase.identities['apple.com'][0]
-          //   : null,
-          // avatarId: null,
-          // facebookId: payload.firebase.identities['facebook.com']?.length
-          //   ? payload.firebase.identities['facebook.com'][0]
-          //   : null,
-          supabaseId: payload.sub,
-          // googleId: payload.firebase.identities['google.com']?.length
-          //   ? payload.firebase.identities['google.com'][0]
-          //   : null,
-          // socialAvatarUrl: payload.picture ?? null,
-          onboardingStatus: EOnboardingStatus.NOT_STARTED,
-          status: EUserStatus.ACTIVE,
-        },
-        CreateUserDto,
-        User,
-      );
+      user = await this.userService.createOne(crudRequest, {
+        email: payload.email ?? '',
+        role: EUserRole.USER,
+        name: payload.name ?? null,
+        appleId: payload.firebase.identities['apple.com']?.length
+          ? payload.firebase.identities['apple.com'][0]
+          : null,
+        avatarId: null,
+        facebookId: payload.firebase.identities['facebook.com']?.length
+          ? payload.firebase.identities['facebook.com'][0]
+          : null,
+        supabaseId: payload.sub,
+        googleId: payload.firebase.identities['google.com']?.length
+          ? payload.firebase.identities['google.com'][0]
+          : null,
+        socialAvatarUrl: payload.picture ?? null,
+        onboardingStatus: EOnboardingStatus.NOT_STARTED,
+        status: EUserStatus.ACTIVE,
+      });
     } else {
       // Update user values if needed
       user = await this.userService.updateOne(
@@ -85,8 +78,6 @@ export class AuthService {
           //   : undefined,
           // socialAvatarUrl: payload.picture ?? null,
         },
-        UpdateUserDto,
-        User,
       );
     }
     return user;
